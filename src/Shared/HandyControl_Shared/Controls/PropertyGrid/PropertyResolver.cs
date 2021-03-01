@@ -69,9 +69,9 @@ namespace HandyControl.Controls
         public PropertyEditorBase ResolveEditor(PropertyDescriptor propertyDescriptor)
         {
             var editorAttribute = propertyDescriptor.Attributes.OfType<EditorAttribute>().FirstOrDefault();
-            var editor = editorAttribute == null || string.IsNullOrEmpty(editorAttribute.EditorTypeName)
+            var editor = editorAttribute == null || string.IsNullOrEmpty(editorAttribute.EditorTypeName) || string.IsNullOrEmpty(editorAttribute.EditorBaseTypeName)
                 ? CreateDefaultEditor(propertyDescriptor.PropertyType)
-                : CreateEditor(Type.GetType(editorAttribute.EditorTypeName));
+                : CreateEditor(Type.GetType(editorAttribute.EditorTypeName), Type.GetType(editorAttribute.EditorBaseTypeName));
 
             return editor;
         }
@@ -102,7 +102,35 @@ namespace HandyControl.Controls
                     ? (PropertyEditorBase) new EnumPropertyEditor()
                     : new ReadOnlyTextPropertyEditor();
 
-        public virtual PropertyEditorBase CreateEditor(Type type) => new ReadOnlyTextPropertyEditor();
+        public virtual PropertyEditorBase CreateEditor(Type type, Type baseType)
+        {
+            // check if base type is correct
+            if (baseType == typeof(PropertyEditorBase))
+            {
+                var assemblyShortName = type.Assembly.GetName().Name;
+                var typeFullName = type.FullName;
+                if (!string.IsNullOrEmpty(assemblyShortName) && !string.IsNullOrEmpty(typeFullName))
+                {
+                    // try to resolve custom types
+                    try
+                    {
+                        var instance = Activator.CreateInstance(assemblyShortName, typeFullName)?.Unwrap();
+                        if (instance is PropertyEditorBase customEditor)
+                        {
+                            return customEditor;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // swallow the exception and return the fallback editor
+                    }
+                }
+
+                return new ReadOnlyTextPropertyEditor();
+            }
+
+            return new ReadOnlyTextPropertyEditor();
+        }
 
         private enum EditorTypeCode
         {
