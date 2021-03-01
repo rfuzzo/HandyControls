@@ -3,7 +3,9 @@
     <AssemblyName>HandyControl</AssemblyName>
     <RootNamespace>HandyControl</RootNamespace>
     <TargetFrameworks>netcoreapp3.0;netcoreapp3.1;net45;net451;net452;net46;net461;net462;net47;net471;net472;net48;net5.0-windows</TargetFrameworks>
-    <Description>Contains some commonly used simple WPF controls (Wkit Edit) All credits to OG author.</Description>
+    <Description>Contains some commonly used simple WPF controls
+(Wkit Edit) All credits to OG author.
+</Description>
     <PackageId>WolvenKit.HandyControl</PackageId>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -12,13 +14,14 @@
     <UseWPF>true</UseWPF>
     <AssemblyOriginatorKeyFile>..\..\Shared\HandyControl_Shared\key.snk</AssemblyOriginatorKeyFile>
     <Copyright>Copyright © HandyOrg 2018-2021</Copyright>
-    <AssemblyVersion>3.1.1.1</AssemblyVersion>
-    <FileVersion>3.1.1.1</FileVersion>
-    <Version>3.1.1.1</Version>
+    <AssemblyVersion>3.1.2.0</AssemblyVersion>
+    <FileVersion>3.1.2.0</FileVersion>
+    <Version>3.1.2</Version>
     <RepositoryUrl>https://github.com/HandyOrg/HandyControl</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>HandyOrg</Company>
     <Product>WolvenKit.HandyControl</Product>
+    <Authors>HandyOrg , WolvenKit ,</Authors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <SignAssembly>true</SignAssembly>
