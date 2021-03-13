@@ -703,6 +703,11 @@ namespace HandyControl.Themes
             _isInitialized = true;
         }
 
+        public ElementTheme GetElementTheme(ApplicationTheme? theme)
+        {
+            return theme == Themes.ApplicationTheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
+        }
+
         private class Data : INotifyPropertyChanged
         {
             public Data(ThemeManager owner)
