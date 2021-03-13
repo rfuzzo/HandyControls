@@ -15,6 +15,7 @@ using HandyControl.Tools;
 using HandyControlDemo.Data;
 using HandyControlDemo.Tools;
 using Microsoft.Win32;
+using RelayCommand = GalaSoft.MvvmLight.Command.RelayCommand;
 
 namespace HandyControlDemo.ViewModel
 {
@@ -52,8 +53,8 @@ namespace HandyControlDemo.ViewModel
 
         public ObservableCollection<ChatInfoModel> ChatInfos { get; set; } = new ObservableCollection<ChatInfoModel>();
 
-        public RelayCommand<KeyEventArgs> SendStringCmd => new Lazy<RelayCommand<KeyEventArgs>>(() =>
-            new RelayCommand<KeyEventArgs>(SendString)).Value;
+        public GalaSoft.MvvmLight.Command.RelayCommand<KeyEventArgs> SendStringCmd => new Lazy<GalaSoft.MvvmLight.Command.RelayCommand<KeyEventArgs>>(() =>
+            new GalaSoft.MvvmLight.Command.RelayCommand<KeyEventArgs>(SendString)).Value;
 
         private void SendString(KeyEventArgs e)
         {
@@ -73,8 +74,8 @@ namespace HandyControlDemo.ViewModel
             }
         }
 
-        public RelayCommand<RoutedEventArgs> ReadMessageCmd => new Lazy<RelayCommand<RoutedEventArgs>>(() =>
-            new RelayCommand<RoutedEventArgs>(ReadMessage)).Value;
+        public GalaSoft.MvvmLight.Command.RelayCommand<RoutedEventArgs> ReadMessageCmd => new Lazy<GalaSoft.MvvmLight.Command.RelayCommand<RoutedEventArgs>>(() =>
+            new GalaSoft.MvvmLight.Command.RelayCommand<RoutedEventArgs>(ReadMessage)).Value;
 
         private void ReadMessage(RoutedEventArgs e)
         {
