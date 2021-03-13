@@ -13,6 +13,9 @@
     <FileVersion>3.1.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\Window\AboutWindow.xaml">
       <Link>Window\AboutWindow.xaml</Link>
     </Resource>

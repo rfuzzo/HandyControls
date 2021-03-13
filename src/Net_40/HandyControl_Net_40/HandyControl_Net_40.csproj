@@ -192,6 +192,7 @@
     <None Include="Themes\Styles\Window.xaml">
       <SubType>Designer</SubType>
     </None>
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
     <Page Include="Themes\Theme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
